@@ -78,6 +78,8 @@ public class Account extends Entity {
 	 */
 	public boolean isValid() {
 		Percentage totalPercentage = Percentage.zero();
+
+		// 所有受益人百分比相加，必须为100%
 		for (Beneficiary b : beneficiaries) {
 			totalPercentage = totalPercentage.add(b.getAllocationPercentage());
 		}

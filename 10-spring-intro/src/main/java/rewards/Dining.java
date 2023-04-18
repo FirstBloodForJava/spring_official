@@ -13,13 +13,13 @@ import common.money.MonetaryAmount;
  */
 public class Dining {
 
-	private MonetaryAmount amount;
+	private MonetaryAmount amount;// 消费金额
 
-	private String creditCardNumber;
+	private String creditCardNumber;// 消费者的编号
 
-	private String merchantNumber;
+	private String merchantNumber;// 执行返现的商家编号
 
-	private SimpleDate date;
+	private SimpleDate date;// 消费时间
 
 	/**
 	 * Creates a new dining, reflecting an amount that was charged to a card by a restaurant on the date specified.
