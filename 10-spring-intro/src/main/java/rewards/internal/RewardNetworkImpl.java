@@ -3,7 +3,9 @@ package rewards.internal;
 import rewards.Dining;
 import rewards.RewardConfirmation;
 import rewards.RewardNetwork;
+import rewards.internal.account.Account;
 import rewards.internal.account.AccountRepository;
+import rewards.internal.restaurant.Restaurant;
 import rewards.internal.restaurant.RestaurantRepository;
 import rewards.internal.reward.RewardRepository;
 
@@ -41,9 +43,9 @@ public class RewardNetworkImpl implements RewardNetwork {
 
 	/**
 	 * Creates a new reward network.
-	 * @param accountRepository the repository for loading accounts to reward
-	 * @param restaurantRepository the repository for loading restaurants that determine how much to reward
-	 * @param rewardRepository the repository for recording a record of successful reward transactions
+	 * @param accountRepository the repository for loading accounts to reward 用于加载帐户奖励的存储库
+	 * @param restaurantRepository the repository for loading restaurants that determine how much to reward 加载餐馆的存储库，决定奖励多少
+	 * @param rewardRepository the repository for recording a record of successful reward transactions 用于记录成功奖励事务记录的存储库
 	 */
 	public RewardNetworkImpl(AccountRepository accountRepository, RestaurantRepository restaurantRepository,
 			RewardRepository rewardRepository) {
@@ -57,6 +59,16 @@ public class RewardNetworkImpl implements RewardNetwork {
 		//          the sequence diagram in the lab document 在这里编写代码奖励一个帐户根据实验文件中的序列图
 		//
 		// TODO-08: Return the corresponding reward confirmation 返回相应的奖励确认
-		return null;
+
+		// 获取账号信息 dining中存在用户编号 通过用户编号查找他的受益人信息
+		Account userAccount = accountRepository.findByCreditCard(dining.getCreditCardNumber());
+
+		// 餐厅回款比例信息 根据餐厅编号，查找出餐饮的返现比例
+		Restaurant userRestaurant = restaurantRepository.findByMerchantNumber(dining.getMerchantNumber());
+
+		// 餐厅奖赏确定
+		RewardConfirmation rewardConfirmation = rewardRepository.confirmReward(
+				userAccount.makeContribution(userRestaurant.calculateBenefitFor(userAccount,dining)), dining);
+		return rewardConfirmation;
 	}
 }
