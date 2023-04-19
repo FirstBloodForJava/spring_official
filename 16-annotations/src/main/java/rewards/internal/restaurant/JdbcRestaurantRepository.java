@@ -19,8 +19,7 @@ import java.util.Map;
  */
 
 /* TODO-06: Let this class to be found in component-scanning
- * - Annotate the class with an appropriate stereotype annotation
- *   to cause component-scanning to detect and load this bean.
+ * - Annotate the class with an appropriate stereotype annotation to cause component-scanning to detect and load this bean.
  * - Inject dataSource. Use constructor injection in this case.
  *   Note that there are already two constructors, one of which
  *   is no-arg constructor.

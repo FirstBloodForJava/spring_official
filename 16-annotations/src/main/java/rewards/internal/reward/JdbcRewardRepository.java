@@ -14,11 +14,9 @@ import java.sql.*;
  * inserting a reward confirmation record.
  */
 
-/* TODO-04: Let this class to be found in component-scanning
- * - Annotate the class with an appropriate stereotype annotation
- *   to cause component-scanning to detect and load this bean.
- * - Inject dataSource by annotating setDataSource() method
- *   with @Autowired.
+/* TODO-04: Let this class to be found in component-scanning 让这个类在组件扫描中找到
+ * - Annotate the class with an appropriate stereotype annotation to cause component-scanning to detect and load this bean.
+ * - Inject dataSource by annotating setDataSource() method with @Autowired. 通过用@Autowired注解注释setDataSource()方法来注入dataSource
  */
 
 public class JdbcRewardRepository implements RewardRepository {
