@@ -10,6 +10,7 @@ import com.jamonapi.MonitorComposite;
 
 public class JamonMonitorFactory implements MonitorFactory, GlobalMonitorStatistics {
 
+	// monitorFactory为FactoryEnabled对象
 	private com.jamonapi.MonitorFactoryInterface monitorFactory = com.jamonapi.MonitorFactory.getFactory();
 
 	public Monitor start(String name) {

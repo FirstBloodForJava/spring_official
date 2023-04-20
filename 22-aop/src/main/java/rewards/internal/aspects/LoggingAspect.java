@@ -9,12 +9,12 @@ import org.slf4j.LoggerFactory;
 import rewards.internal.monitor.Monitor;
 import rewards.internal.monitor.MonitorFactory;
 
-// 	TODO-02: Use AOP to log a message before
-//           any repository's find...() method is invoked.
-//  - Add an appropriate annotation to this class to indicate this class is an aspect.
-//	- Also make it as a component.
+// 	TODO-02: Use AOP to log a message before any repository's find...() method is invoked. 使用AOP在任何repository的find方法执行之前记录一个消息
+
+//  - Add an appropriate annotation to this class to indicate this class is an aspect. 添加一个合适的注解表示这个类是一个切面类
+//	- Also make it as a component. 也把他作为一个组件
 //	- Optionally place @Autowired annotation on the constructor
-//    where `MonitorFactory` dependency is being injected.
+//    where `MonitorFactory` dependency is being injected. 意思是可以有@Autowired注解也可以不需要。因为只有一个构造方法
 //    (It is optional since there is only a single constructor in the class.)
 
 public class LoggingAspect {
@@ -33,8 +33,7 @@ public class LoggingAspect {
 
 	// TODO-03: Write Pointcut Expression
 	// - Decide which advice type is most appropriate
-	// - Write a pointcut expression that selects only find* methods on
-	//    our repository classes.
+	// - Write a pointcut expression that selects only find* methods on our repository classes. 写一个切入点表达式，只选择在repository类中的find*方法
 
 	public void implLogging(JoinPoint joinPoint) {
 		// Do not modify this log message or the test will fail
@@ -44,10 +43,9 @@ public class LoggingAspect {
 	}
 	
 	
-    // TODO-07: Use AOP to time update...() methods.
-    // - Mark this method as an around advice.
-	// - Write a pointcut expression to match on all update* methods
-	//	 on all Repository classes.
+    // TODO-07: Use AOP to time update...() methods. 使用AOP对…()方法进行时间更新
+    // - Mark this method as an around advice. 将方法标记为环绕通知
+	// - Write a pointcut expression to match on all update* methods on all Repository classes.
 
 	public Object monitor(ProceedingJoinPoint repositoryMethod) throws Throwable {
 		String name = createJoinPointTraceName(repositoryMethod);
