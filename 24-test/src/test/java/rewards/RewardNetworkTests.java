@@ -41,11 +41,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * - Rerun the current test, it should fail.  Why?
  */
 
-/* TODO-03: Assign the 'jdbc' profile to all Jdbc*Repository classes
- * - Using the @Profile annotation, assign the 'jdbc' profile to all Jdbc*Repository classes
+/* TODO-03: Assign the 'jdbc' profile to all Jdbc*Repository classes 将jdbc配置文件分配给Jdbc*Repository类
+ * - Using the @Profile annotation, assign the 'jdbc' profile to all Jdbc*Repository classes jdbc配置文件
  *   (such as JdbcAccountRepository).  (Be sure to annotate the actual repository classes in
  *   src/main/java, not the test classes in src/main/test!)
- * - In the same way, assign the 'stub' profile to all Stub*Repository classes
+ * - In the same way, assign the 'stub' profile to all Stub*Repository classes stub配置文件
  *   (such as StubAccountRepository)
  * - Add @ActiveProfiles to this test class (below) and specify the "stub" profile.
  * - Run the current test, it should pass.

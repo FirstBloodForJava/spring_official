@@ -28,6 +28,8 @@ public class SimpleJndiHelper implements BeanFactoryPostProcessor {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	public void doJndiSetup() {
+
+		// 设置一些系统值
 		System.setProperty(Context.INITIAL_CONTEXT_FACTORY, //
 				"org.osjava.sj.SimpleContextFactory");
 		System.setProperty("org.osjava.sj.root", "jndi");
@@ -37,6 +39,7 @@ public class SimpleJndiHelper implements BeanFactoryPostProcessor {
 		logger.info("Running JDNI setup");
 
 		try {
+			// 这个对象可以访问JNDI上下文
 			InitialContext ic = new InitialContext();
 
 			// Construct DataSource
@@ -45,7 +48,7 @@ public class SimpleJndiHelper implements BeanFactoryPostProcessor {
 					.addScript("classpath:rewards/testdb/data.sql") //
 					.build();
 
-			// Bind as a JNDI resource
+			// Bind as a JNDI resource 绑定ds作为JNDI的资源
 			ic.rebind(REWARDS_DB_JNDI_PATH, ds);
 			logger.info("JNDI Resource '" + REWARDS_DB_JNDI_PATH //
 					+ "' instanceof " + ds.getClass().getSimpleName());
