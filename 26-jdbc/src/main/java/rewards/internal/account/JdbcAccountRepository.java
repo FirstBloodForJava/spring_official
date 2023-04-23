@@ -21,10 +21,10 @@ import java.sql.SQLException;
 // - Refactor JdbcAccountRepositoryTests accordingly
 // - Run JdbcAccountRepositoryTests and verity it passes
 
-// TODO-05: Refactor this repository to use JdbcTemplate.
+// TODO-05: Refactor(重构) this repository to use JdbcTemplate.
 // - Add a field of type JdbcTemplate.
 // - Refactor the code in the constructor to instantiate the JdbcTemplate
-//   object using the given DataSource object.
+//   object using the given DataSource object.用给定的数据源实例化JdbcTemplate
 public class JdbcAccountRepository implements AccountRepository {
 
 	private DataSource dataSource;

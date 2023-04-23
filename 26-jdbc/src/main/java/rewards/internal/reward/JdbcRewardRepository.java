@@ -20,12 +20,10 @@ import java.sql.*;
 // - Refactor JdbcRewardRepositoryTests accordingly
 // - Run JdbcRewardRepositoryTests and verity it passes
 
-// TODO-03: Refactor the cumbersome low-level JDBC code in JdbcRewardRepository with JdbcTemplate.
+// TODO-03: Refactor the cumbersome(笨重的) low-level JDBC code in JdbcRewardRepository with JdbcTemplate.
 // - Add a field of type JdbcTemplate.
-// - Refactor the code in the constructor to instantiate JdbcTemplate
-//   object from the given DataSource object.
-// - Refactor the confirmReward(...) and nextConfirmationNumber() methods to use
-//   the JdbcTemplate object.
+// - Refactor the code in the constructor to instantiate JdbcTemplate object from the given DataSource object.
+// - Refactor the confirmReward(...) and nextConfirmationNumber() methods to use the JdbcTemplate object.
 //
 //   DO NOT delete the old JDBC code, just comment out the try/catch block.
 //   You will need to refer to the old JDBC code to write the new code.
