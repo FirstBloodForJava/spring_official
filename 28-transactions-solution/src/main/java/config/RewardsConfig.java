@@ -26,6 +26,7 @@ public class RewardsConfig {
 
 	// 可能是Bean的名称相同，只能注入一个对象
 
+	@Bean
 	public RewardNetwork rewardNetwork(){
 		return new RewardNetworkImpl(
 			accountRepository(), 

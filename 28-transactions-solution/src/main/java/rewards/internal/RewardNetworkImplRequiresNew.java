@@ -44,13 +44,17 @@ public class RewardNetworkImplRequiresNew implements RewardNetwork {
 		this.rewardRepository = rewardRepository;
 	}
 
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	@Transactional(propagation=Propagation.REQUIRES_NEW,rollbackFor = NullPointerException.class)
 	public RewardConfirmation rewardAccountFor(Dining dining) {
 		Account account = accountRepository.findByCreditCard(dining.getCreditCardNumber());
 		Restaurant restaurant = restaurantRepository.findByMerchantNumber(dining.getMerchantNumber());
 		MonetaryAmount amount = restaurant.calculateBenefitFor(account, dining);
 		AccountContribution contribution = account.makeContribution(amount);
 		accountRepository.updateBeneficiaries(account);
+		if (false){
+			throw new NullPointerException("rewardAccountFor test Exception");
+		}
 		return rewardRepository.confirmReward(contribution, dining);
+
 	}
 }

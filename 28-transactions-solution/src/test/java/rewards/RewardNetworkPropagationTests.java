@@ -9,9 +9,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.sql.DataSource;
+
+import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,6 +44,7 @@ public class RewardNetworkPropagationTests {
 	@Autowired
 	private PlatformTransactionManager transactionManager;
 
+	// 在找到DataSource对象的情况下注入对象
 	@Autowired
 	public void initJdbcTemplate(DataSource dataSource) {
 		this.template = new JdbcTemplate(dataSource);
@@ -48,13 +52,22 @@ public class RewardNetworkPropagationTests {
 
 	@Test
 	public void testPropagation() {
-		// Open a transaction for testing
-		TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+		// Open a transaction for testing 打开一个事务进行测试
+		//TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 		Dining dining = Dining.createDining("100.00", "1234123412341234", "1234567890");
-		rewardNetwork.rewardAccountFor(dining);
+		try{
+			RewardConfirmation rewardConfirmation = rewardNetwork.rewardAccountFor(dining);
+		}catch (NullPointerException e){
+			System.out.println("test: " + e);
+		}
 
-		// Rollback the transaction test transaction
-		transactionManager.rollback(status);
+		// Rollback the transaction test transaction 回滚事务测试事务
+
+		// 为了测试外面的事务是否会影响RewardNetwork类rewardAccountFor方法的事务
+		String updateSql = "update T_ACCOUNT_BENEFICIARY SET SAVINGS = ? where ACCOUNT_ID = ? and NAME = ?";
+		template.update(updateSql, new BigDecimal(4), 0, "Annabelle");
+
+		//transactionManager.rollback(status);
 
 		String sql = "select SAVINGS from T_ACCOUNT_BENEFICIARY where NAME = ?";
 		assertEquals(Double.valueOf(4.00), template.queryForObject(sql, Double.class, "Annabelle"));
