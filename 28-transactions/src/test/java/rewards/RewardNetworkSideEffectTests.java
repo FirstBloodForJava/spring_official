@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * to run in method name order using @FixMethodOrder(MethodSorters.NAME_ASCENDING)
  * in this particular testing scenario. (In general, you should not do this.)
  *
- * TODO-08: MAKE SURE to revert the propagation attribute back to
- * REQUIRED in RewardNetworkImpl.
+ * TODO-08: MAKE SURE to revert the propagation attribute back to REQUIRED in RewardNetworkImpl.
+ * 确保在RewardNetworkImpl中将传播属性恢复为REQUIRED
  *
  * TODO-09: Examine the @Test logic below. Note that committed results from the
  * first test will invalidate the assertions in the second test. Run this test,

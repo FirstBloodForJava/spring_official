@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * execution.
  */
 
-// TODO-05: Review and run the testPropagation() method below.
+// TODO-05: Review and run the testPropagation() method below. 检查并运行下面的testPropagation()方法
 //
 //  It uses a transaction-manager to implement transactions manually
 //  and runs rewardAccountFor() within a transaction then performs a manual rollback.
