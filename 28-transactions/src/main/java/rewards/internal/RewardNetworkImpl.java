@@ -22,10 +22,10 @@ import common.money.MonetaryAmount;
  * Said in other words, this class implements the "reward account for dining" use case.
  *
  * TODO-00: In this lab, you are going to exercise the following:
- * - Enabling Spring Transaction
- * - Adding transactional behavior to a method
- * - Exercising transaction propagation
- * - Exercising transactional behavior in test
+ * - Enabling Spring Transaction 启用Spring事务
+ * - Adding transactional behavior to a method 添加事务行为到一个方法
+ * - Exercising transaction propagation 练习事务传播
+ * - Exercising transactional behavior in test 在测试中执行事务行为
  */
 public class RewardNetworkImpl implements RewardNetwork {
 

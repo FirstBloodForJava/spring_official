@@ -23,8 +23,9 @@ public class RewardsConfig {
 
 	@Autowired
 	DataSource dataSource;
-		
-	@Bean
+
+	// 可能是Bean的名称相同，只能注入一个对象
+
 	public RewardNetwork rewardNetwork(){
 		return new RewardNetworkImpl(
 			accountRepository(), 

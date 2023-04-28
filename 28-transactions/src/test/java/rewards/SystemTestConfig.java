@@ -31,6 +31,6 @@ public class SystemTestConfig {
 	
 	//	TODO-02: Define a bean named 'transactionManager' that configures a
 	//           DataSourceTransactionManager.
-	//           How does it know which dataSource to manage?
+	//           How does it know which dataSource to manage?它如何知道要管理哪个数据源
 	
 }

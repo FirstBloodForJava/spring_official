@@ -3,6 +3,7 @@ package rewards;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * A system test that demonstrates how propagation settings affect transactional execution.
+ * 演示传播设置如何影响事务执行的系统测试。
  */
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes={SystemTestRequiresNewConfig.class})
@@ -24,6 +26,7 @@ public class RewardNetworkPropagationTests {
 	/**
 	 * The object being tested.
 	 */
+	//@Qualifier("rewardNetwork1")
 	@Autowired
 	private RewardNetwork rewardNetwork;
 
@@ -33,7 +36,7 @@ public class RewardNetworkPropagationTests {
 	private JdbcTemplate template;
 
 	/**
-	 * Manages transaction manually
+	 * Manages transaction manually 手动管理事务
 	 */
 	@Autowired
 	private PlatformTransactionManager transactionManager;

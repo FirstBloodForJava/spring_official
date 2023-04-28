@@ -29,14 +29,12 @@ public class RewardNetworkSideEffectTests {
 	private static final String SAVINGS_SQL = "select SAVINGS from T_ACCOUNT_BENEFICIARY where NAME = ?";
 
 	/**
-	 * Amount of money in Annabelle's savings account before running the test
-	 * methods
+	 * Amount of money in Annabelle's savings account before running the test methods
 	 */
 	private static Double annabelleInitialSavings;
 
 	/**
-	 * Amount of money in Corgan's savings account before running the test
-	 * methods
+	 * Amount of money in Corgan's savings account before running the test methods
 	 */
 	private static Double corganInitialSavings;
 
@@ -70,8 +68,12 @@ public class RewardNetworkSideEffectTests {
 	}
 
 	private void runTest() {
+		// 创建一个消费记录
 		Dining dining = Dining.createDining("100.00", "1234123412341234", "1234567890");
+
+		// 返现分发
 		rewardNetwork.rewardAccountFor(dining);
+
 		assertEquals(Double.valueOf(annabelleInitialSavings + 4.00d),
 				jdbcTemplate.queryForObject(SAVINGS_SQL, Double.class, "Annabelle"));
 		assertEquals(Double.valueOf(corganInitialSavings + 4.00d),

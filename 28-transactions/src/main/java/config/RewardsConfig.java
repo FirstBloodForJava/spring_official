@@ -15,7 +15,7 @@ import rewards.internal.reward.RewardRepository;
 import javax.sql.DataSource;
 
 
-//	TODO-03: Add an annotation to enable Spring transaction
+//	TODO-03: Add an annotation to enable Spring transaction 注解开启Srping事务
 
 @Configuration
 public class RewardsConfig {

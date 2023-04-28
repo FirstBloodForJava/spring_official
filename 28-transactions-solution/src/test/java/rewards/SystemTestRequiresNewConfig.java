@@ -14,6 +14,7 @@ import rewards.internal.reward.RewardRepository;
 @Import(SystemTestConfig.class)
 public class SystemTestRequiresNewConfig {
 
+	// 为什么注入两个RewardNetwork对象，@Autowired注入的RewardNetwork对象会是一个被JDK代理的对象?因为这个对象的方法被@Transaction注解了
 	@Bean
 	public RewardNetwork rewardNetwork(
 		AccountRepository accountRepository,
